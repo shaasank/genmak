@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import TextReveal from '../components/TextReveal';
 import NumberCounter from '../components/NumberCounter';
+import HeroCanvas from '../components/HeroCanvas';
+import ParallaxWrapper from '../components/ParallaxWrapper';
 
 export default function Home() {
   return (
@@ -10,33 +12,39 @@ export default function Home() {
       <section className="container flex-col justify-center" style={{ minHeight: '90vh', position: 'relative', paddingTop: '10vh' }}>
         <div style={{ maxWidth: '1000px', zIndex: 10 }}>
           <p className="label" style={{ opacity: 0.5, marginBottom: '3rem' }}>GenClosers &mdash; Sales System</p>
-          <h1 style={{ marginBottom: '4rem', textWrap: 'balance' }}>
-            <TextReveal text="Zero clarity to confidently closing." />
-          </h1>
-          <div className="flex" style={{ gap: '4rem', alignItems: 'flex-start' }}>
-            <p className="text-large" style={{ maxWidth: '400px', opacity: 0.8 }}>
-              Sales is a system, not a talent. Human conversation, not manipulation.
-            </p>
-            <p className="text-large" style={{ maxWidth: '300px', opacity: 0.6 }}>
-              Sharp, systemized, confident.
-            </p>
-          </div>
+          <ParallaxWrapper offset={50}>
+            <h1 style={{ marginBottom: '4rem', textWrap: 'balance' }}>
+              <TextReveal text="Zero clarity to confidently closing." />
+            </h1>
+          </ParallaxWrapper>
+          <ParallaxWrapper offset={80}>
+            <div className="flex flex-wrap" style={{ gap: '2rem', alignItems: 'flex-start' }}>
+              <p className="text-large" style={{ maxWidth: '400px', opacity: 0.8 }}>
+                Sales is a system, not a talent. Human conversation, not manipulation.
+              </p>
+              <p className="text-large" style={{ maxWidth: '300px', opacity: 0.6 }}>
+                Sharp, systemized, confident.
+              </p>
+            </div>
+          </ParallaxWrapper>
         </div>
         
-        {/* Placeholder for 3D G-mark */}
-        <div style={{ position: 'absolute', top: '15%', right: '-5%', width: '50vw', height: '50vw', zIndex: -1, opacity: 0.05, mixBlendMode: 'multiply' }}>
-           {/* WebGL Canvas will be rendered here */}
-        </div>
+        {/* 3D G-mark with Parallax */}
+        <ParallaxWrapper offset={150} className="hero-canvas-container">
+           <HeroCanvas />
+        </ParallaxWrapper>
       </section>
 
       {/* Two-track fork */}
-      <h2 className="display-2" style={{ marginBottom: '6rem', maxWidth: '800px', textWrap: 'balance' }}>
-        <TextReveal text="Two distinct tracks. One unified system." />
-      </h2>
-      <section className="flex" style={{ width: '100%', minHeight: '100vh', flexWrap: 'wrap' }}>
+      <div className="container">
+        <h2 className="display-2" style={{ marginBottom: '6rem', maxWidth: '800px', textWrap: 'balance' }}>
+          <TextReveal text="Two distinct tracks. One unified system." />
+        </h2>
+      </div>
+      <section className="flex flex-wrap md:flex-row" style={{ width: '100%', minHeight: '100vh' }}>
         
         {/* Track A: Business */}
-        <div className="bg-black text-beige flex-col justify-between" style={{ flex: '1 1 50vw', padding: 'clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 5vw)', borderRight: '1px solid rgba(239, 232, 218, 0.12)' }}>
+        <div className="bg-black text-beige flex-col justify-between w-full" style={{ flex: '1 1 300px', padding: 'clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 5vw)', borderRight: '1px solid rgba(239, 232, 218, 0.12)' }}>
           <div style={{ maxWidth: '500px', margin: '0 auto' }}>
             <p className="label text-red" style={{ marginBottom: '2rem' }}>Track A</p>
             <h3 className="display-3" style={{ marginBottom: '2rem' }}>
@@ -57,7 +65,7 @@ export default function Home() {
         </div>
 
         {/* Track B: Course */}
-        <div className="bg-beige flex-col justify-between" style={{ flex: '1 1 50vw', padding: 'clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 5vw)' }}>
+        <div className="bg-beige flex-col justify-between w-full" style={{ flex: '1 1 300px', padding: 'clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 5vw)' }}>
           <div style={{ maxWidth: '500px', margin: '0 auto' }}>
             <p className="label text-red" style={{ marginBottom: '2rem' }}>Track B</p>
             <h3 className="display-3" style={{ marginBottom: '2rem' }}>
@@ -80,22 +88,22 @@ export default function Home() {
 
       {/* Condensed Founders Strip */}
       <section className="bg-beige-dim border-t border-b">
-        <div className="container py-half" style={{ display: 'flex', flexWrap: 'wrap', gap: '6rem' }}>
-          <div style={{ flex: 1, minWidth: '300px' }}>
+        <div className="container py-half flex flex-wrap gap-8" style={{ alignItems: 'flex-start' }}>
+          <div style={{ flex: '1 1 300px' }}>
             <h3 style={{ marginBottom: '2rem', opacity: 0.5 }}>The Partners</h3>
             <p className="text-large" style={{ maxWidth: '400px' }}>
               A partnership firm built on the premise that human conversation scales when systemized.
             </p>
           </div>
-          <div className="flex-col gap-4" style={{ flex: 2, minWidth: '300px' }}>
-            <div className="flex items-center gap-4 py-half border-t" style={{ borderColor: 'rgba(14,13,12,0.1)' }}>
+          <div className="flex-col gap-4" style={{ flex: '2 1 300px' }}>
+            <div className="flex items-center gap-4 py-half border-t flex-wrap" style={{ borderColor: 'rgba(14,13,12,0.1)' }}>
               <div style={{ width: '80px', height: '80px', backgroundColor: 'var(--gc-black)', borderRadius: '50%', flexShrink: 0 }}></div>
               <div>
                 <h3 style={{ margin: '0 0 0.5rem 0' }}>Monish Aravind K</h3>
                 <p className="label" style={{ margin: 0, opacity: 0.6 }}>Managing Partner</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 py-half border-t" style={{ borderColor: 'rgba(14,13,12,0.1)' }}>
+            <div className="flex items-center gap-4 py-half border-t flex-wrap" style={{ borderColor: 'rgba(14,13,12,0.1)' }}>
               <div style={{ width: '80px', height: '80px', backgroundColor: 'var(--gc-black)', borderRadius: '50%', flexShrink: 0 }}></div>
               <div>
                 <h3 style={{ margin: '0 0 0.5rem 0' }}>Sethuraman A</h3>

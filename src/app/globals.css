@@ -150,3 +150,63 @@ a:hover { opacity: 0.7; }
     scroll-behavior: auto !important;
   }
 }
+
+/* Responsive Utilities */
+.md\:flex-row { flex-direction: column; }
+@media (min-width: 768px) {
+  .md\:flex-row { flex-direction: row; }
+}
+
+.flex-wrap { flex-wrap: wrap; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 6vw;
+  }
+  .display-1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  .display-2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .display-3 {
+    font-size: clamp(1.25rem, 6vw, 2rem);
+  }
+  .gap-8 { gap: 2rem; }
+  .gap-16 { gap: 4rem; }
+  
+  /* Make header flex stack on very small screens if needed, but we'll try to keep it row for now, or just reduce gap */
+  .header-nav {
+    display: none; /* Hide nav on mobile for a simpler header, or make it smaller */
+  }
+  
+  .hero-canvas-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw !important;
+    height: 100vw !important;
+    opacity: 0.1 !important;
+    z-index: 0 !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .header-nav {
+    display: flex;
+  }
+  .hero-canvas-container {
+    position: absolute;
+    top: 15%;
+    right: -5%;
+    width: 50vw;
+    height: 50vw;
+    z-index: 0;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+  }
+}
