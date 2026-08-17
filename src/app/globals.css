@@ -183,6 +183,26 @@ a:hover { opacity: 0.7; }
     display: none; /* Hide nav on mobile for a simpler header, or make it smaller */
   }
   
+  .mobile-menu-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 60;
+  }
+  
+  .mobile-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
   .hero-canvas-container {
     position: absolute;
     top: 50%;
@@ -198,6 +218,9 @@ a:hover { opacity: 0.7; }
 @media (min-width: 769px) {
   .header-nav {
     display: flex;
+  }
+  .mobile-menu-btn {
+    display: none;
   }
   .hero-canvas-container {
     position: absolute;
