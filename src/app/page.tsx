@@ -1,17 +1,22 @@
 import Link from 'next/link';
 import TextReveal from '../components/TextReveal';
 import NumberCounter from '../components/NumberCounter';
-import HeroCanvas from '../components/HeroCanvas';
 import ParallaxWrapper from '../components/ParallaxWrapper';
+import ScrollSequence from '../components/ScrollSequence';
 
 export default function Home() {
   return (
     <div className="flex-col" style={{ width: '100%', overflow: 'hidden' }}>
+      <ScrollSequence />
       
-      {/* Hero Section */}
-      <section className="container flex-col justify-center" style={{ minHeight: '90vh', position: 'relative', paddingTop: '10vh' }}>
-        <div style={{ maxWidth: '1000px', zIndex: 10 }}>
-          <p className="label" style={{ opacity: 0.5, marginBottom: '3rem' }}>GenClosers &mdash; Sales System</p>
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        
+        {/* Phase 1: Hero Pinned Area */}
+        <div id="hero-scroll" style={{ height: '300vh' }}>
+          <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <section className="container flex-col justify-center" style={{ position: 'relative' }}>
+        <div style={{ maxWidth: '1000px', zIndex: 10, color: '#fff', textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.8)' }}>
+          <p className="label" style={{ opacity: 0.8, marginBottom: '3rem', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>GenClosers &mdash; Sales System</p>
           <ParallaxWrapper offset={50}>
             <h1 style={{ marginBottom: '4rem', textWrap: 'balance' }}>
               <TextReveal text="Zero clarity to confidently closing." />
@@ -19,25 +24,26 @@ export default function Home() {
           </ParallaxWrapper>
           <ParallaxWrapper offset={80}>
             <div className="flex flex-wrap" style={{ gap: '2rem', alignItems: 'flex-start' }}>
-              <p className="text-large" style={{ maxWidth: '400px', opacity: 0.8 }}>
+              <p className="text-large" style={{ maxWidth: '400px', opacity: 0.9 }}>
                 Sales is a system, not a talent. Human conversation, not manipulation.
               </p>
-              <p className="text-large" style={{ maxWidth: '300px', opacity: 0.6 }}>
+              <p className="text-large" style={{ maxWidth: '300px', opacity: 0.7 }}>
                 Sharp, systemized, confident.
               </p>
             </div>
           </ParallaxWrapper>
         </div>
         
-        {/* 3D G-mark with Parallax */}
-        <ParallaxWrapper offset={150} className="hero-canvas-container">
-           <HeroCanvas />
-        </ParallaxWrapper>
-      </section>
 
-      {/* Two-track fork */}
+            </section>
+          </div>
+        </div>
+
+        {/* Phase 2: Middle Content (Normal Scrolling) */}
+        <div id="middle-content">
+          {/* Two-track fork */}
       <div className="container">
-        <h2 className="display-2" style={{ marginBottom: '6rem', maxWidth: '800px', textWrap: 'balance' }}>
+        <h2 className="display-2" style={{ marginBottom: '6rem', maxWidth: '800px', textWrap: 'balance', color: 'var(--gc-red)' }}>
           <TextReveal text="Two distinct tracks. One unified system." />
         </h2>
       </div>
@@ -113,6 +119,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+        </div>
+
+        {/* Phase 3: Outro Pinned Area (Scrolls the rest of the sequence) */}
+        <div id="outro-scroll" style={{ height: '200vh' }}>
+          {/* Empty space to allow scrolling through the remaining frames */}
+        </div>
+      </div>
     </div>
   );
 }
