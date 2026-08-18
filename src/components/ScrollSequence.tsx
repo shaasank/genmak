@@ -130,23 +130,23 @@ export default function ScrollSequence({
             const outroHeight = outroEl.offsetHeight - window.innerHeight;
 
             if (scrollY < middleTop) {
-              // Phase 1: Inside Hero -> frames 0 to 114
+              // Phase 1: Inside Hero -> frames 16 to 114 (indices 15 to 113)
               const fraction = Math.max(0, Math.min(1, (scrollY - heroTop) / (heroHeight || 1)));
-              frameIndex = Math.floor(fraction * 114);
+              frameIndex = 15 + Math.floor(fraction * (113 - 15));
             } else if (scrollY >= middleTop && scrollY < outroTop) {
-              // Phase 2: Inside Middle -> stuck on frame 114
-              frameIndex = 114;
+              // Phase 2: Inside Middle -> stuck on frame 114 (index 113)
+              frameIndex = 113;
             } else {
-              // Phase 3: Inside Outro -> frames 115 to 159 (frameCount - 1)
+              // Phase 3: Inside Outro -> frames 115 to 160 (indices 114 to 159)
               const fraction = Math.max(0, Math.min(1, (scrollY - outroTop) / (outroHeight || 1)));
-              const remainingFrames = frameCount - 1 - 114;
-              frameIndex = 114 + Math.floor(fraction * remainingFrames);
+              const remainingFrames = frameCount - 1 - 113;
+              frameIndex = 113 + Math.floor(fraction * remainingFrames);
             }
           } else {
             // Fallback if elements aren't found
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             const scrollFraction = maxScroll > 0 ? Math.max(0, Math.min(1, scrollY / maxScroll)) : 0;
-            frameIndex = Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount));
+            frameIndex = Math.max(15, Math.min(frameCount - 1, Math.floor(scrollFraction * frameCount)));
           }
 
           drawFrame(frameIndex);

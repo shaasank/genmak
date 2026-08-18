@@ -13,37 +13,35 @@ export default function Home() {
         
         {/* Phase 1: Hero Pinned Area */}
         <div id="hero-scroll" style={{ height: '300vh' }}>
-          <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <section className="container flex-col justify-center" style={{ position: 'relative' }}>
-        <div style={{ maxWidth: '1000px', zIndex: 10, color: '#fff', textShadow: '0 4px 20px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.8)' }}>
-          <p className="label" style={{ opacity: 0.8, marginBottom: '3rem', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>GenClosers &mdash; Sales System</p>
-          <ParallaxWrapper offset={50}>
-            <h1 style={{ marginBottom: '4rem', textWrap: 'balance' }}>
-              <TextReveal text="Zero clarity to confidently closing." />
-            </h1>
-          </ParallaxWrapper>
-          <ParallaxWrapper offset={80}>
-            <div className="flex flex-wrap" style={{ gap: '2rem', alignItems: 'flex-start' }}>
-              <p className="text-large" style={{ maxWidth: '400px', opacity: 0.9 }}>
-                Sales is a system, not a talent. Human conversation, not manipulation.
-              </p>
-              <p className="text-large" style={{ maxWidth: '300px', opacity: 0.7 }}>
-                Sharp, systemized, confident.
-              </p>
-            </div>
-          </ParallaxWrapper>
-        </div>
-        
-
-            </section>
-          </div>
+          {/* Scroll distance here plays the animation from frame 16 to 114 */}
         </div>
 
         {/* Phase 2: Middle Content (Normal Scrolling) */}
         <div id="middle-content">
+          <section className="container flex-col justify-center" style={{ minHeight: '90vh', position: 'relative', paddingTop: '10vh' }}>
+            <div style={{ maxWidth: '1200px', zIndex: 10, color: 'var(--gc-red)', textShadow: '0 8px 40px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,1), 0 0 40px rgba(232,24,26,0.4)' }}>
+              <p className="label" style={{ opacity: 0.9, marginBottom: '3rem', color: '#fff', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>GenClosers &mdash; Sales System</p>
+              <ParallaxWrapper offset={50}>
+                <h1 style={{ marginBottom: '4rem', textWrap: 'balance' }}>
+                  <TextReveal text="Zero clarity to confidently closing." />
+                </h1>
+              </ParallaxWrapper>
+              <ParallaxWrapper offset={80}>
+                <div className="flex flex-wrap" style={{ gap: '2rem', alignItems: 'flex-start' }}>
+                  <p className="text-large" style={{ maxWidth: '400px', opacity: 0.9 }}>
+                    Sales is a system, not a talent. Human conversation, not manipulation.
+                  </p>
+                  <p className="text-large" style={{ maxWidth: '300px', opacity: 0.7 }}>
+                    Sharp, systemized, confident.
+                  </p>
+                </div>
+              </ParallaxWrapper>
+            </div>
+          </section>
+
           {/* Two-track fork */}
       <div className="container">
-        <h2 className="display-2" style={{ marginBottom: '6rem', maxWidth: '800px', textWrap: 'balance', color: 'var(--gc-red)' }}>
+        <h2 className="display-2" style={{ marginBottom: '6rem', maxWidth: '800px', textWrap: 'balance', color: '#808080' }}>
           <TextReveal text="Two distinct tracks. One unified system." />
         </h2>
       </div>
